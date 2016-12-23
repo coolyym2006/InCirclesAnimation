@@ -52,6 +52,11 @@
 + (void)showLoadingOnView:(UIView *)superView{
     
     YYMView *instance = [[self class] shareInstanceYYMView];
+    for (CALayer *layer in instance.contentView.layer.sublayers) {
+        [layer removeFromSuperlayer];
+    }
+    
+    
     CALayer *layer = [instance ReplicatorLayer];
     
     [instance.contentView.layer addSublayer:layer];
